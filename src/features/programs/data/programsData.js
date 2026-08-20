@@ -1,0 +1,47 @@
+export const programsData = [
+  {
+    id: 'reguler',
+    title: 'Kelas Reguler',
+    badge: 'Paling Populer',
+    description: 'Kurikulum adaptif dengan pengajar profesional bersertifikasi untuk memastikan pemahaman materi secara maksimal.',
+    features: [
+      'Pertemuan rutin 3x seminggu',
+      'Modul belajar komprehensif & latihan soal',
+      'Tryout berkala dengan analisis skor',
+      'Grup diskusi interaktif bersama mentor',
+    ],
+    price: 350000,
+    pricePeriod: '/bulan',
+    icon: '📚',
+  },
+  {
+    id: 'privat',
+    title: 'Bimbingan Privat',
+    badge: '1 on 1 Eksklusif',
+    description: 'Pendampingan 1-on-1 dengan jadwal fleksibel yang disesuaikan dengan kecepatan dan gaya belajar masing-masing siswa.',
+    features: [
+      'Jadwal belajar fleksibel sesuai kebutuhan',
+      'Tutor 1-on-1 berdedikasi & berpengalaman',
+      'Materi khusus disesuaikan target nilai',
+      'Laporan progres belajar mingguan',
+    ],
+    price: 750000,
+    pricePeriod: '/bulan',
+    icon: '🎯',
+  },
+  {
+    id: 'supercamp',
+    title: 'Supercamp',
+    badge: 'Intensif Eksklusif',
+    description: 'Program karantina intensif dan bimbingan eksklusif dengan simulasi real-time menjelang seleksi masuk PTN impian.',
+    features: [
+      'Drilling 1000+ soal tipe HOTS terbaru',
+      'Simulasi ujian berbasis komputer (CBT)',
+      'Bedah strategi & tips manajemen waktu',
+      'Sesi sharing motivasi & strategi masuk PTN',
+    ],
+    price: 1200000,
+    pricePeriod: '/paket',
+    icon: '⚡',
+  },
+];
