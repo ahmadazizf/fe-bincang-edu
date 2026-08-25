@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { siteConfig } from '../../config/site';
 import Button from '../ui/Button';
 
@@ -10,26 +11,26 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Brand Logo */}
-          <a href="#" className="flex items-center gap-2 font-bold text-xl text-blue-600">
+          <Link to="/" className="flex items-center gap-2 font-bold text-xl text-blue-600">
             <img src="/logo.svg" alt={siteConfig.name} className="h-10 w-auto" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {siteConfig.navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a href="#registrasi">
+            <Link to="/#registrasi">
               <Button size="sm" variant="primary">
                 Daftar Sekarang
               </Button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -55,21 +56,21 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-4 space-y-2">
           {siteConfig.navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               onClick={() => setIsOpen(false)}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="pt-2">
-            <a href="#registrasi" onClick={() => setIsOpen(false)} className="block w-full">
+            <Link to="/#registrasi" onClick={() => setIsOpen(false)} className="block w-full">
               <Button size="sm" variant="primary" className="w-full">
                 Daftar Sekarang
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       )}

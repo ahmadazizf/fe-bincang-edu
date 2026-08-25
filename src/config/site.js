@@ -6,10 +6,10 @@ export const siteConfig = {
   tagline: 'Siap Hadapi Ujian',
   description: 'Platform bimbingan belajar terpercaya dengan kurikulum adaptif dan pengajar profesional untuk mempersiapkan ujian Anda.',
   navLinks: [
-    { label: 'Beranda', href: '#' },
-    { label: 'Program Unggulan', href: '#program' },
-    { label: 'Pendaftaran', href: '#registrasi' },
-    { label: 'Kontak Kami', href: '#kontak' },
+    { label: 'Beranda', href: '/' },
+    { label: 'Program Unggulan', href: '/#program' },
+    { label: 'Pendaftaran', href: '/#registrasi' },
+    { label: 'Kontak Kami', href: '/#kontak' },
   ],
   channels: [
     {

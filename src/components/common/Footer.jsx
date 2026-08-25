@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { siteConfig } from '../../config/site';
 
 export default function Footer() {
@@ -9,7 +10,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-left">
         {/* Brand Column */}
         <div className="md:col-span-1">
-          <img src="/logo-white.svg" alt={siteConfig.name} className="h-10 w-auto mb-4" />
+          <Link to="/">
+            <img src="/logo-white.svg" alt={siteConfig.name} className="h-10 w-auto mb-4" />
+          </Link>
           <p className="text-sm leading-relaxed text-gray-400 mb-4">{siteConfig.description}</p>
           <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 rounded-full text-xs font-semibold">
             {siteConfig.tagline}
@@ -111,9 +114,9 @@ export default function Footer() {
           <ul className="text-sm space-y-2.5">
             {siteConfig.navLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="hover:text-white transition-colors">
+                <Link to={link.href} className="hover:text-white transition-colors">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
