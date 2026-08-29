@@ -4,14 +4,41 @@ import Button from '../../../components/ui/Button';
 import { formatRupiah } from '../../../utils/helpers';
 
 export default function ProgramDetailHero({ program }) {
-  const { title, badge, tagline, fullDescription, price, pricePeriod, icon, stats } = program;
+  const {
+    title,
+    badge,
+    tagline,
+    fullDescription,
+    price,
+    pricePeriod,
+    stats,
+    heroBgImage,
+  } = program;
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-blue-900 via-blue-800 to-indigo-900 text-white py-16 px-4 sm:px-6 lg:px-8">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+    <div className="relative overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-white py-16 px-4 sm:px-6 lg:px-8 min-h-[520px] flex items-center">
+      {/* Background Image with Rich Multi-Layer Gradient Overlays */}
+      {heroBgImage && (
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img
+            src={heroBgImage}
+            alt={title}
+            className="w-full h-full object-cover object-center filter brightness-90 transform scale-105 transition-transform duration-1000"
+          />
+          {/* Layered Gradient Overlay for Crystal Clear Text Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-950/85 to-indigo-950/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-transparent to-blue-950/50" />
+        </div>
+      )}
 
-      <div className="max-w-6xl mx-auto relative">
+      {/* Background Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none z-0" />
+
+      {/* Decorative Glow Circles */}
+      <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-500/15 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none z-0" />
+
+      <div className="max-w-6xl mx-auto relative z-10 w-full">
         {/* Breadcrumb with fade-in */}
         <nav className="flex items-center gap-2 text-xs text-blue-200 mb-8 font-medium animate-page-fade-in">
           <Link to="/" className="hover:text-white transition-colors">
@@ -29,12 +56,15 @@ export default function ProgramDetailHero({ program }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Info with Slide-In */}
           <div className="lg:col-span-7 text-left animate-fade-in-left">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-3xl p-2 bg-white/10 backdrop-blur-xs rounded-xl border border-white/20 transform hover:scale-110 transition-transform">
-                {icon}
-              </span>
+            {/* Official Logo Only & Program Badge */}
+            <div className="flex items-center gap-4 mb-6">
+              <img
+                src="/logo.png"
+                alt="Bincang Edukasi"
+                className="h-20 w-20 sm:h-24 sm:w-24 object-contain rounded-2xl p-2 bg-white/15 backdrop-blur-md border border-white/30 shadow-xl hover:scale-105 transition-transform shrink-0"
+              />
               {badge && (
-                <span className="px-3.5 py-1 rounded-full bg-yellow-400 text-blue-950 text-xs font-bold uppercase tracking-wider shadow-sm animate-pulse">
+                <span className="px-4 py-2 rounded-full bg-yellow-400 text-blue-950 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg animate-pulse">
                   {badge}
                 </span>
               )}
@@ -48,14 +78,14 @@ export default function ProgramDetailHero({ program }) {
               "{tagline}"
             </p>
 
-            <p className="text-blue-100 text-base leading-relaxed mb-8">
+            <p className="text-blue-100 text-base leading-relaxed mb-8 max-w-2xl">
               {fullDescription}
             </p>
 
             {/* Quick Action Buttons */}
             <div className="flex flex-wrap gap-4 items-center">
               <a href="#daftar-program">
-                <Button size="lg" variant="secondary" className="shadow-lg shadow-yellow-400/20 hover:scale-105 transition-transform">
+                <Button size="lg" variant="secondary" className="shadow-lg shadow-yellow-400/20 hover:scale-105 transition-transform font-bold">
                   Daftar Program Ini
                 </Button>
               </a>
@@ -80,7 +110,7 @@ export default function ProgramDetailHero({ program }) {
 
           {/* Right Column: Pricing Card & Key Stats with Slide-In */}
           <div className="lg:col-span-5 animate-fade-in-right">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-6 sm:p-8 text-left shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+            <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl border border-white/20 p-6 sm:p-8 text-left shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
               <div className="border-b border-white/15 pb-6 mb-6">
                 <span className="text-xs font-semibold text-blue-200 uppercase tracking-widest block mb-1">
                   Investasi Program
@@ -92,7 +122,7 @@ export default function ProgramDetailHero({ program }) {
                   <span className="text-blue-200 text-sm font-medium">{pricePeriod}</span>
                 </div>
                 <p className="text-xs text-blue-200 mt-2">
-                  *Sudah termasuk modul belajar lengkap, tryout CBT, dan bimbingan konsultasi jurusan.
+                  *Pendampingan full-service dari analisis profil hingga hasil akhir siap pakai.
                 </p>
               </div>
 
@@ -103,7 +133,7 @@ export default function ProgramDetailHero({ program }) {
                     ⏱️
                   </span>
                   <div>
-                    <div className="text-xs text-blue-200">Intensitas & Sesi</div>
+                    <div className="text-xs text-blue-200">Intensitas &amp; Sesi</div>
                     <div className="text-sm font-bold text-white">{stats.intensity}</div>
                   </div>
                 </div>
@@ -133,7 +163,7 @@ export default function ProgramDetailHero({ program }) {
                     📅
                   </span>
                   <div>
-                    <div className="text-xs text-blue-200">Durasi Belajar</div>
+                    <div className="text-xs text-blue-200">Durasi Bimbingan</div>
                     <div className="text-sm font-bold text-white">{stats.duration}</div>
                   </div>
                 </div>
