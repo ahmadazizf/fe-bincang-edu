@@ -10,8 +10,16 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-left">
         {/* Brand Column */}
         <div className="md:col-span-1">
-          <Link to="/">
-            <img src="/logo-white.svg" alt={siteConfig.name} className="h-10 w-auto mb-4" />
+          <Link to="/" className="flex items-center gap-2.5 mb-4 group">
+            <img src="/logo.png" alt={siteConfig.name} className="h-10 w-10 object-contain rounded-xl p-0.5 bg-white shadow-xs shrink-0 group-hover:scale-105 transition-transform" />
+            <div className="flex flex-col text-left">
+              <span className="font-black text-base sm:text-lg text-white tracking-tight leading-none">
+                BINCANG EDUKASI
+              </span>
+              <span className="font-serif italic text-[11px] text-amber-400 font-bold leading-tight mt-0.5">
+                Siap Hadapi Ujian
+              </span>
+            </div>
           </Link>
           <p className="text-sm leading-relaxed text-gray-400 mb-4">{siteConfig.description}</p>
           <span className="inline-block px-3 py-1 bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 rounded-full text-xs font-semibold">

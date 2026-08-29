@@ -1,14 +1,29 @@
 /**
- * Konfigurasi situs global untuk Bincang Edukasi
+ * Konfigurasi situs global dan SEO untuk Bincang Edukasi
  */
 export const siteConfig = {
   name: 'Bincang Edukasi',
   tagline: 'Siap Hadapi Ujian',
-  description: 'Platform bimbingan belajar terpercaya dengan kurikulum adaptif dan pengajar profesional untuk mempersiapkan ujian Anda.',
+  siteUrl: 'https://bincangedukasi.com',
+  title: 'Bincang Edukasi | Bimbel Masuk UI, Bimbel SNBT & Supercamp SIMAK KKI UI Terpercaya',
+  description: 'Bimbingan belajar spesialis Bimbel Masuk UI, Bimbel SNBT, Bimbel Simak UI, Supercamp SIMAK KKI UI, dan Bimbel PTN Favorit dengan Master Tutor lulusan Universitas Indonesia dan tingkat kelulusan >90%.',
+  keywords: [
+    'Bimbel PTN',
+    'Bimbel SNBT',
+    'Supercamp SIMAK KKI UI',
+    'Bimbel Simak UI',
+    'Bimbel Masuk UI',
+    'Bimbel Kedokteran UI',
+    'Bimbel KKI UI',
+    'Karantina SNBT',
+    'Tryout UTBK SNBT',
+    'Bimbingan Belajar PTN Terbaik',
+  ],
+  author: 'Bincang Edukasi',
+  ogImage: '/logo.png',
   navLinks: [
     { label: 'Beranda', href: '/' },
     { label: 'Program Unggulan', href: '/#program' },
-    { label: 'Pendaftaran', href: '/#registrasi' },
     { label: 'Kontak Kami', href: '/#kontak' },
   ],
   channels: [

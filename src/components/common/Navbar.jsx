@@ -11,8 +11,16 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl text-blue-600">
-            <img src="/logo.svg" alt={siteConfig.name} className="h-10 w-auto" />
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img src="/logo.png" alt={siteConfig.name} className="h-10 w-10 object-contain rounded-xl shadow-xs shrink-0 group-hover:scale-105 transition-transform" />
+            <div className="flex flex-col text-left">
+              <span className="font-black text-base sm:text-lg text-blue-900 tracking-tight leading-none">
+                BINCANG EDUKASI
+              </span>
+              <span className="font-serif italic text-[11px] text-amber-600 font-bold leading-tight mt-0.5">
+                Siap Hadapi Ujian
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -26,7 +34,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/#registrasi">
+            <Link to="/#program">
               <Button size="sm" variant="primary">
                 Daftar Sekarang
               </Button>
@@ -66,7 +74,7 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2">
-            <Link to="/#registrasi" onClick={() => setIsOpen(false)} className="block w-full">
+            <Link to="/#program" onClick={() => setIsOpen(false)} className="block w-full">
               <Button size="sm" variant="primary" className="w-full">
                 Daftar Sekarang
               </Button>

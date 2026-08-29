@@ -4,7 +4,7 @@ import Card from '../../../components/ui/Card';
 import Button from '../../../components/ui/Button';
 import { formatRupiah } from '../../../utils/helpers';
 
-export default function ProgramCard({ program, onSelect }) {
+export default function ProgramCard({ program }) {
   const { id, slug, title, badge, description, features, price, pricePeriod, icon, alumni } = program;
   const programSlug = slug || id;
 
@@ -40,7 +40,7 @@ export default function ProgramCard({ program, onSelect }) {
               to={`/program/${programSlug}`}
               className="text-blue-600 font-bold hover:underline"
             >
-              Lihat &rarr;
+              Lihat Detail &rarr;
             </Link>
           </div>
         )}
@@ -71,15 +71,14 @@ export default function ProgramCard({ program, onSelect }) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <a href="#registrasi" className="block w-full">
+          <Link to={`/program/${programSlug}#daftar-program`} className="block w-full">
             <Button
               variant="primary"
-              className="w-full"
-              onClick={() => onSelect && onSelect(program.id)}
+              className="w-full font-bold shadow-sm hover:shadow-md"
             >
-              Pilih Program Ini
+              Pilih Paket &amp; Daftar
             </Button>
-          </a>
+          </Link>
 
           <Link to={`/program/${programSlug}`} className="block w-full">
             <Button
@@ -87,7 +86,7 @@ export default function ProgramCard({ program, onSelect }) {
               size="sm"
               className="w-full text-xs font-semibold hover:border-blue-300 hover:text-blue-600"
             >
-              Detail & Alumni Program &rarr;
+              Lihat Silabus &amp; Detail Program &rarr;
             </Button>
           </Link>
         </div>

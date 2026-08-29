@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <!-- Centered Emblem Group -->
+  <g transform="translate(100, 40) scale(1.0)">
+    <!-- Yellow / Orange Disc Background -->
+    <circle cx="150" cy="170" r="105" fill="#FFA000"/>
+
+    <!-- Toga / Graduation Hat Top -->
+    <path d="M150 35L240 70L150 105L60 70Z" fill="#2563EB"/>
+    <!-- Cap Headband -->
+    <path d="M102 87v16c0 14 22 24 48 24s48-10 48-24V87" fill="#1D4ED8"/>
+    <!-- Cap Tassel -->
+    <path d="M232 75v32" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="232" cy="110" r="4.5" fill="#2563EB"/>
+
+    <!-- Graduate Head -->
+    <circle cx="150" cy="132" r="32" fill="#2563EB"/>
+
+    <!-- Dynamic Graduate Body / Swoosh -->
+    <path d="M85 95C72 135 78 185 150 280C140 230 148 185 185 152C160 170 140 170 125 150C108 130 98 105 85 95Z" fill="#2563EB"/>
+    
+    <!-- Right Arm & Wings -->
+    <path d="M150 178C185 145 220 120 242 122C218 152 195 188 178 275C170 230 185 195 208 170C185 180 165 178 150 178Z" fill="#2563EB"/>
+    <path d="M185 270C205 210 232 170 248 162C236 192 220 235 208 270Z" fill="#2563EB"/>
+  </g>
+
+  <!-- Typography Below (Centered) -->
+  <text x="250" y="380" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif" font-size="34" font-weight="900" fill="#1E3A8A" letter-spacing="1">
+    BINCANG EDUKASI
+  </text>
+  
+  <text x="250" y="425" text-anchor="middle" font-family="Georgia, Cambria, 'Times New Roman', serif" font-size="28" font-style="italic" font-weight="600" fill="#D97706">
+    Siap Hadapi Ujian
+  </text>
+</svg>

@@ -1,0 +1,6 @@
+# Robots.txt for Bincang Edukasi
+User-agent: *
+Allow: /
+
+# Sitemap Link
+Sitemap: https://bincangedukasi.com/sitemap.xml
