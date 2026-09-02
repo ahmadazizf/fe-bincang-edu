@@ -5,7 +5,7 @@ import Button from '../../../components/ui/Button';
 import { formatRupiah } from '../../../utils/helpers';
 
 export default function ProgramCard({ program }) {
-  const { id, slug, title, badge, description, features, price, pricePeriod, icon, alumni } = program;
+  const { id, slug, title, badge, description, features, price, pricePeriod, icon } = program;
   const programSlug = slug || id;
 
   return (
@@ -28,22 +28,7 @@ export default function ProgramCard({ program }) {
         >
           <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
         </Link>
-        <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
-
-        {/* Alumni Preview Badge */}
-        {alumni && alumni.length > 0 && (
-          <div className="mb-5 p-2.5 bg-amber-50/70 border border-amber-200/60 rounded-xl flex items-center justify-between text-xs text-amber-900">
-            <span className="font-semibold flex items-center gap-1.5">
-              <span>🎓</span> {alumni.length}+ Alumni Lolos PTN
-            </span>
-            <Link
-              to={`/program/${programSlug}`}
-              className="text-blue-600 font-bold hover:underline"
-            >
-              Lihat Detail &rarr;
-            </Link>
-          </div>
-        )}
+        <p className="text-gray-600 text-sm leading-relaxed mb-6">{description}</p>
 
         <div className="border-t border-gray-100 pt-4 mb-6">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
@@ -71,7 +56,7 @@ export default function ProgramCard({ program }) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <Link to={`/program/${programSlug}#daftar-program`} className="block w-full">
+          <Link to={`/program/${programSlug}#pilihan-paket`} className="block w-full">
             <Button
               variant="primary"
               className="w-full font-bold shadow-sm hover:shadow-md"

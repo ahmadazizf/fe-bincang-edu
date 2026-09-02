@@ -1,10 +1,9 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import {
   programsData,
   ProgramDetailHero,
-  ProgramAlumniList,
   ProgramSyllabus,
   ProgramPackagesTable,
 } from '../features/programs';
@@ -13,6 +12,8 @@ import Button from '../components/ui/Button';
 
 export default function ProgramDetailPage() {
   const { programId } = useParams();
+  const location = useLocation();
+
   const program = programsData.find(
     (p) =>
       p.slug === programId ||
@@ -22,6 +23,22 @@ export default function ProgramDetailPage() {
 
   // Inisialisasi hook dengan program yang sedang aktif
   const registrationState = useRegistration(program);
+
+  // Handle smooth scroll on hash changes or initial route load
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      const targetElement = document.getElementById(elementId);
+      if (targetElement) {
+        const timeoutId = setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+        return () => clearTimeout(timeoutId);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.hash, programId]);
 
   // If program not found
   if (!program) {
@@ -75,7 +92,7 @@ export default function ProgramDetailPage() {
   const otherPrograms = programsData.filter((p) => p.id !== program.id);
 
   return (
-    <div key={program.id} className="bg-gray-50 min-h-screen animate-page-fade-in">
+    <div key={program.id} className="min-h-screen animate-page-fade-in">
       {/* Dynamic SEO Meta Tags for Specific Program */}
       <SEO
         title={program.seoTitle || program.title}
@@ -85,10 +102,10 @@ export default function ProgramDetailPage() {
         schemaData={courseSchema}
       />
 
-      {/* 1. Header & Program Hero Banner */}
+      {/* 1. Header & Program Hero Banner (Biru) */}
       <ProgramDetailHero program={program} />
 
-      {/* 2. Pilihan Paket & Rincian Biaya (Sub-Program) */}
+      {/* 2. Pilihan Paket & Rincian Biaya / Sub-Program (Kuning) */}
       {program.packages && (
         <ProgramPackagesTable
           packages={program.packages}
@@ -96,63 +113,60 @@ export default function ProgramDetailPage() {
         />
       )}
 
-      {/* 3. Kurikulum, Silabus & Fasilitas */}
+      {/* 3. Kurikulum, Silabus & Fasilitas (Biru) */}
       <ProgramSyllabus
         curriculum={program.curriculum}
         features={program.features}
       />
 
-      {/* 4. Showcase Alumni & Testimoni Program Ini */}
-      <ProgramAlumniList
-        alumni={program.alumni}
-        programTitle={program.title}
+      {/* 4. Formulir Pendaftaran Program Langsung (Kuning) */}
+      <RegistrationForm
+        registrationState={registrationState}
+        program={program}
       />
 
-      {/* 5. Formulir Pendaftaran Program Langsung */}
-      <div id="daftar-program" className="scroll-mt-20">
-        <RegistrationForm
-          registrationState={registrationState}
-          program={program}
-        />
-      </div>
+      {/* 5. Rekomendasi Program Lainnya (Biru) */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-blue-800/50">
+        {/* Subtle Background Radial Pattern */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
 
-      {/* 6. Rekomendasi Program Lainnya */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-gray-200">
-        <div className="text-center mb-10">
-          <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-1">
-            Pilihan Lainnya
-          </span>
-          <h2 className="text-2xl font-bold text-gray-900">
-            Jelajahi Program Bimbingan Belajar Lainnya
-          </h2>
-        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-white/10 text-yellow-300 text-xs font-bold uppercase tracking-widest mb-3 border border-white/20 shadow-xs backdrop-blur-md">
+              Pilihan Lainnya
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Jelajahi Program Bimbingan Belajar Lainnya
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {otherPrograms.map((other) => (
-            <Link
-              key={other.id}
-              to={`/program/${other.slug || other.id}`}
-              className="p-6 bg-white rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 text-left block group hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-2xl p-2 bg-blue-50 rounded-xl inline-block group-hover:scale-110 transition-transform">
-                  {other.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {otherPrograms.map((other) => (
+              <Link
+                key={other.id}
+                to={`/program/${other.slug || other.id}#pilihan-paket`}
+                className="p-6 bg-white/95 backdrop-blur-xs rounded-2xl border border-white/80 hover:border-amber-300 hover:shadow-2xl transition-all duration-300 text-left block group hover:-translate-y-1 text-gray-900"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl p-2 bg-blue-50 rounded-xl inline-block group-hover:scale-110 transition-transform">
+                    {other.icon}
+                  </span>
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">
+                    {other.badge}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                  {other.title} &rarr;
+                </h3>
+                <p className="text-xs text-gray-600 line-clamp-2 mb-4">
+                  {other.description}
+                </p>
+                <span className="text-xs font-bold text-blue-600 group-hover:underline">
+                  Lihat Pilihan Paket &rarr;
                 </span>
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">
-                  {other.badge}
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
-                {other.title} &rarr;
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2 mb-4">
-                {other.description}
-              </p>
-              <span className="text-xs font-semibold text-blue-600 group-hover:underline">
-                Pelajari Program Ini &rarr;
-              </span>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

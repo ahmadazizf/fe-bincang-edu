@@ -84,9 +84,9 @@ export default function ProgramDetailHero({ program }) {
 
             {/* Quick Action Buttons */}
             <div className="flex flex-wrap gap-4 items-center">
-              <a href="#daftar-program">
+              <a href="#pilihan-paket">
                 <Button size="lg" variant="secondary" className="shadow-lg shadow-yellow-400/20 hover:scale-105 transition-transform font-bold">
-                  Daftar Program Ini
+                  Pilih Paket Bimbingan
                 </Button>
               </a>
               <a

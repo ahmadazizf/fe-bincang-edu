@@ -105,96 +105,108 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="kontak"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-20 sm:scroll-mt-24 transition-all duration-500"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-amber-500 via-yellow-400 to-amber-500 py-20 px-4 sm:px-6 lg:px-8 scroll-mt-16 sm:scroll-mt-20 border-t border-amber-300 shadow-inner transition-all duration-500"
     >
-      {/* Header Section */}
-      <div
-        className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-      >
-        <span className="inline-block px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-widest mb-3 border border-blue-200/60">
-          Official Channels & Store
-        </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
-          Kontak & Tautan Resmi
-        </h2>
-        <p className="text-base sm:text-lg text-gray-600">
-          Hubungi kami langsung atau akses materi belajar, modul, buku, dan media sosial resmi Bincang Edukasi di bawah ini.
-        </p>
-      </div>
+      {/* Subtle Background White Radial Pattern */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1.5px,transparent_1.5px)] [background-size:20px_20px] pointer-events-none" />
 
-      {/* Channels Grid */}
-      <div
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 rounded-2xl transition-all duration-700 ${isHighlighted ? 'animate-section-glow ring-4 ring-blue-400/40 rounded-2xl' : ''
+      {/* Decorative Radiant Warm Sun Glow Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-200/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-400/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header Section */}
+        <div
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
-      >
-        {siteConfig.channels.map((channel, index) => (
-          <a
-            key={channel.id}
-            href={channel.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group block transition-all duration-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        >
+          <span className="inline-block px-3.5 py-1 rounded-full bg-white/30 text-blue-950 text-xs font-bold uppercase tracking-widest mb-3 border border-white/50 shadow-xs backdrop-blur-md">
+            Official Channels &amp; Store
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-950 tracking-tight mb-4">
+            Kontak &amp; Tautan Resmi
+          </h2>
+          <p className="text-base sm:text-lg text-blue-950/85 font-medium leading-relaxed">
+            Hubungi kami langsung atau akses materi belajar, modul, buku, dan media sosial resmi Bincang Edukasi di bawah ini.
+          </p>
+        </div>
+
+        {/* Channels Grid */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 rounded-2xl transition-all duration-700 ${
+            isHighlighted ? 'animate-section-glow ring-4 ring-white/60 rounded-2xl' : ''
+          }`}
+        >
+          {siteConfig.channels.map((channel, index) => (
+            <a
+              key={channel.id}
+              href={channel.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group block transition-all duration-500 transform ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
-            style={{ transitionDelay: `${index * 100}ms` }}
-          >
-            <Card
-              hoverEffect
-              className={`h-full flex flex-col justify-between p-6 transition-all duration-300 group-hover:border-blue-300 group-hover:shadow-xl ${channel.highlight
-                  ? 'border-blue-200 bg-gradient-to-br from-blue-50/50 via-white to-white'
-                  : 'bg-white'
-                }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div>
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <ChannelIcon type={channel.type} />
-                  {channel.badge && (
-                    <span
-                      className={`text-xs font-bold px-2.5 py-1 rounded-full ${channel.highlight
-                          ? 'bg-green-100 text-green-800 border border-green-200'
-                          : 'bg-blue-100 text-blue-800 border border-blue-200'
+              <Card
+                hoverEffect
+                className={`h-full flex flex-col justify-between p-6 transition-all duration-300 rounded-2xl shadow-lg hover:shadow-2xl border ${
+                  channel.highlight
+                    ? 'border-2 border-amber-300 bg-white'
+                    : 'border-white/80 bg-white/95 backdrop-blur-xs'
+                }`}
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <ChannelIcon type={channel.type} />
+                    {channel.badge && (
+                      <span
+                        className={`text-xs font-bold px-2.5 py-1 rounded-full ${
+                          channel.highlight
+                            ? 'bg-green-100 text-green-800 border border-green-200'
+                            : 'bg-blue-100 text-blue-800 border border-blue-200'
                         }`}
+                      >
+                        {channel.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="text-xs font-semibold uppercase tracking-wider text-blue-700 mb-1">
+                    {channel.category}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-1.5 flex items-center gap-1.5">
+                    <span>{channel.title}</span>
+                    <svg
+                      className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      {channel.badge}
-                    </span>
-                  )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {channel.description}
+                  </p>
                 </div>
 
-                <div className="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-1">
-                  {channel.category}
+                <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                  <span className="font-mono truncate max-w-[200px] text-gray-400 group-hover:text-blue-500 transition-colors" />
+                  <span className="font-semibold text-blue-600 group-hover:underline">
+                    Kunjungi &rarr;
+                  </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-1.5 flex items-center gap-1.5">
-                  <span>{channel.title}</span>
-                  <svg
-                    className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </h3>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                  {channel.description}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-                <span className="font-mono truncate max-w-[200px] text-gray-400 group-hover:text-blue-500 transition-colors">
-                  {/* {channel.label} */}
-                </span>
-                <span className="font-semibold text-blue-600 group-hover:underline">
-                  Kunjungi &rarr;
-                </span>
-              </div>
-            </Card>
-          </a>
-        ))}
+              </Card>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

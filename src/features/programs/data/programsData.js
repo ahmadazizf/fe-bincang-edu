@@ -275,7 +275,7 @@ export const programsData = [
     features: [
       'Akomodasi Premium di Saffron Apartment Sentul Bogor (Studio / 2 Bedroom 63m²)',
       'Konsumsi Lengkap: Makan Berat 3x sehari + Coffee Break 2x sehari + Fasilitas Laundry',
-      'Pembelajaran Soal Asli & Soal FR (Field Report) Terbaru SIMAK KKI UI 2026',
+      'Pembelajaran Soal Asli Terbaru SIMAK KKI UI 2026',
       'Persiapan Khusus Kedokteran: Tes Psikologi (MMPI) & Wawancara (Multiple Mini Interview / MMI)',
       'Konsultasi Gratis Pembuatan Motivation Letter / Personal Statement',
       'Jadwal Rutin: 1 Hari 4 Sesi Belajar bersama Tutor (Pagi - Sore)',
@@ -286,7 +286,7 @@ export const programsData = [
     curriculum: [
       {
         topic: '1. Sesi Belajar Harian Bersama Tutor (1 Hari 4 Sesi: Pagi - Sore)',
-        details: 'Pembahasan konsep materi mendalam dan drilling intensif menggunakan bank soal asli dan soal FR (Field Report) terbaru SIMAK KKI UI 2026.',
+        details: 'Pembahasan konsep materi mendalam dan drilling intensif menggunakan bank soal asli terbaru SIMAK KKI UI 2026.',
       },
       {
         topic: '2. Try Out Mini Materi (Kelas Malam) & Try Out Akbar (Sabtu)',

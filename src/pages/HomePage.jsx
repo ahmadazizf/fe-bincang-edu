@@ -1,6 +1,6 @@
 import React from 'react';
 import SEO from '../components/common/SEO';
-import { HeroSection } from '../features/hero';
+import { HeroSection, HeroBannerSection } from '../features/hero';
 import { ProgramList } from '../features/programs';
 import { ContactSection } from '../features/contact';
 
@@ -119,10 +119,13 @@ export default function HomePage() {
       {/* 1. Hero Feature */}
       <HeroSection />
 
-      {/* 2. Programs Catalog Feature */}
+      {/* 2. Secondary Hero Banner Showcase */}
+      <HeroBannerSection />
+
+      {/* 3. Programs Catalog Feature */}
       <ProgramList />
 
-      {/* 3. Official Channels & Kontak Kami Feature */}
+      {/* 4. Official Channels & Kontak Kami Feature */}
       <ContactSection />
     </>
   );

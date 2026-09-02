@@ -30,7 +30,7 @@ export default function ProgramSelectModal({ isOpen, onClose }) {
 
   const handleSelect = (slug) => {
     onClose();
-    navigate(`/program/${slug}#daftar-program`);
+    navigate(`/program/${slug}#pilihan-paket`);
   };
 
   return (

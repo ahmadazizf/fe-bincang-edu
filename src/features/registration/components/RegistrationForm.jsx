@@ -65,29 +65,36 @@ export default function RegistrationForm({ registrationState, program }) {
     <section
       ref={sectionRef}
       id="daftar-program"
-      className="bg-gradient-to-b from-gray-100 via-blue-50/30 to-gray-200 py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20 sm:scroll-mt-24 transition-all duration-500"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-amber-500 via-yellow-400 to-amber-500 py-20 px-4 sm:px-6 lg:px-8 scroll-mt-16 sm:scroll-mt-20 border-t border-amber-300 shadow-inner transition-all duration-500"
     >
+      {/* Subtle Background White Radial Pattern */}
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1.5px,transparent_1.5px)] [background-size:20px_20px] pointer-events-none" />
+
+      {/* Decorative Radiant Warm Sun Glow Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-200/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-400/40 rounded-full blur-3xl pointer-events-none" />
+
       <div
-        className={`max-w-2xl mx-auto transition-all duration-700 transform ${
+        className={`max-w-2xl mx-auto relative z-10 transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         <div className="text-center mb-8">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold uppercase tracking-widest mb-2 border border-blue-200">
+          <span className="inline-block px-3.5 py-1 rounded-full bg-white/30 text-blue-950 text-xs font-bold uppercase tracking-widest mb-2 border border-white/50 shadow-xs backdrop-blur-md">
             Formulir Pendaftaran
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-extrabold text-blue-950 tracking-tight">
             {program ? `Daftar ${program.title}` : 'Formulir Pendaftaran Siswa'}
           </h2>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-blue-950/85 font-medium mt-2 leading-relaxed">
             Isi formulir di bawah ini untuk pendaftaran langsung ke WhatsApp Admin resmi Bincang Edukasi.
           </p>
         </div>
 
         <Card
-          className={`shadow-xl border-0 p-6 sm:p-8 transition-all duration-500 relative ${
+          className={`shadow-2xl border border-white/80 bg-white/95 backdrop-blur-xs p-6 sm:p-8 rounded-3xl transition-all duration-500 relative ${
             isHighlighted
-              ? 'animate-section-glow ring-4 ring-blue-500/60 shadow-2xl scale-[1.01]'
+              ? 'animate-section-glow ring-4 ring-white/60 shadow-2xl scale-[1.01]'
               : 'hover:shadow-2xl'
           }`}
         >
