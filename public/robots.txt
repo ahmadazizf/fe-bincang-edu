@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Link
-Sitemap: https://bincangedukasi.com/sitemap.xml
+Sitemap: https://bincangedu.com/sitemap.xml

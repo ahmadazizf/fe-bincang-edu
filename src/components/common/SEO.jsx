@@ -20,8 +20,8 @@ export default function SEO({
   const finalKeywords = keywords
     ? (Array.isArray(keywords) ? keywords.join(', ') : keywords)
     : siteConfig.keywords.join(', ');
-  const finalCanonical = canonicalUrl || window.location.href;
-  const finalOgImage = ogImage || `${window.location.origin}${siteConfig.ogImage}`;
+  const finalCanonical = canonicalUrl || siteConfig.siteUrl;
+  const finalOgImage = ogImage || `${siteConfig.siteUrl}${siteConfig.ogImage}`;
 
   useEffect(() => {
     // 1. Update Document Title
@@ -87,7 +87,7 @@ export default function SEO({
       name: siteConfig.name,
       alternateName: ['Bincang Edukasi Bimbel', 'Bimbel Bincang Edukasi'],
       url: siteConfig.siteUrl,
-      logo: `${window.location.origin}/logo.png`,
+      logo: `${siteConfig.siteUrl}/logo.png`,
       description: siteConfig.description,
       slogan: siteConfig.tagline,
       sameAs: [

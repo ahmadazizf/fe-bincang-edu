@@ -4,7 +4,7 @@
 export const siteConfig = {
   name: 'Bincang Edukasi',
   tagline: 'Siap Hadapi Ujian',
-  siteUrl: 'https://bincangedukasi.com',
+  siteUrl: 'https://bincangedu.com',
   title: 'Bincang Edukasi | Bimbel Masuk UI, Bimbel SNBT & Supercamp SIMAK KKI UI Terpercaya',
   description: 'Bimbingan belajar spesialis Bimbel Masuk UI, Bimbel SNBT, Bimbel Simak UI, Supercamp SIMAK KKI UI, dan Bimbel PTN Favorit dengan Master Tutor lulusan Universitas Indonesia dan tingkat kelulusan >90%.',
   keywords: [
@@ -89,7 +89,7 @@ export const siteConfig = {
   contacts: {
     whatsapp: 'https://wa.me/6285890306392',
     phone: '+62 858-9030-6392',
-    email: 'info@bincangedukasi.com',
+    email: 'info@bincangedu.com',
     address: 'Indonesia',
   },
 };

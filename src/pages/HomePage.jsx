@@ -11,10 +11,10 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'EducationalOrganization',
-        '@id': 'https://bincangedukasi.com/#organization',
+        '@id': 'https://bincangedu.com/#organization',
         name: 'Bincang Edukasi',
-        url: 'https://bincangedukasi.com',
-        logo: 'https://bincangedukasi.com/logo.png',
+        url: 'https://bincangedu.com',
+        logo: 'https://bincangedu.com/logo.png',
         description: 'Bimbel Masuk UI, Bimbel SNBT, Bimbel Simak UI, Supercamp SIMAK KKI UI, dan Bimbel PTN Favorit terpercaya bersama Master Tutor lulusan Universitas Indonesia.',
         slogan: 'Siap Hadapi Ujian',
         telephone: '+6285890306392',
@@ -37,7 +37,7 @@ export default function HomePage() {
             provider: {
               '@type': 'EducationalOrganization',
               name: 'Bincang Edukasi',
-              url: 'https://bincangedukasi.com',
+              url: 'https://bincangedu.com',
             },
           },
           {
@@ -48,7 +48,7 @@ export default function HomePage() {
             provider: {
               '@type': 'EducationalOrganization',
               name: 'Bincang Edukasi',
-              url: 'https://bincangedukasi.com',
+              url: 'https://bincangedu.com',
             },
           },
           {
@@ -59,7 +59,7 @@ export default function HomePage() {
             provider: {
               '@type': 'EducationalOrganization',
               name: 'Bincang Edukasi',
-              url: 'https://bincangedukasi.com',
+              url: 'https://bincangedu.com',
             },
           },
         ],
@@ -88,7 +88,7 @@ export default function HomePage() {
             name: 'Bagaimana cara mendaftar bimbingan belajar Bincang Edukasi?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Pendaftaran dapat dilakukan dengan memilih salah satu program unggulan di website bincangedukasi.com, lalu mengisi formulir pada halaman detail program untuk langsung terhubung ke WhatsApp Admin resmi di +62 858-9030-6392.',
+              text: 'Pendaftaran dapat dilakukan dengan memilih salah satu program unggulan di website bincangedu.com, lalu mengisi formulir pada halaman detail program untuk langsung terhubung ke WhatsApp Admin resmi di +62 858-9030-6392.',
             },
           },
         ],
@@ -112,7 +112,7 @@ export default function HomePage() {
           'Bimbel KKI UI',
           'Tryout SNBT 2026',
         ]}
-        canonicalUrl="https://bincangedukasi.com/"
+        canonicalUrl="https://bincangedu.com/"
         schemaData={homeSchema}
       />
 

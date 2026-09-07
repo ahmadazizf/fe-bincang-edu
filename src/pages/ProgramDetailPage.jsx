@@ -69,7 +69,7 @@ export default function ProgramDetailPage() {
     provider: {
       '@type': 'EducationalOrganization',
       name: 'Bincang Edukasi',
-      sameAs: 'https://bincangedukasi.com',
+      sameAs: 'https://bincangedu.com',
     },
     offers: {
       '@type': 'Offer',
@@ -98,7 +98,7 @@ export default function ProgramDetailPage() {
         title={program.seoTitle || program.title}
         description={program.seoDescription || program.fullDescription}
         keywords={program.seoKeywords || ['Bimbel PTN', 'Bimbel SNBT', 'Supercamp SIMAK KKI UI', 'Bimbel Simak UI', 'Bimbel Masuk UI']}
-        canonicalUrl={`https://bincangedukasi.com/program/${program.slug || program.id}`}
+        canonicalUrl={`https://bincangedu.com/program/${program.slug || program.id}`}
         schemaData={courseSchema}
       />
 
