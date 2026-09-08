@@ -80,7 +80,7 @@ export default function ProgramSelectModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop with Fade In / Out */}
       <div
         className={`fixed inset-0 bg-blue-950/70 backdrop-blur-xs transition-opacity ${
@@ -95,36 +95,36 @@ export default function ProgramSelectModal({ isOpen, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className={`relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 z-10 text-left border border-gray-100 max-h-[90vh] overflow-y-auto ${
+        className={`relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-2xl w-full p-4 sm:p-7 z-10 text-left border border-gray-100 my-auto max-h-[92vh] flex flex-col ${
           isClosing ? 'animate-modal-exit' : 'animate-modal-enter'
         }`}
       >
         {/* Close Button (X) */}
         <button
           onClick={triggerClose}
-          className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none cursor-pointer"
+          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 text-gray-400 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors focus:outline-none cursor-pointer z-20"
           aria-label="Tutup Modal"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
         {/* Modal Header */}
-        <div className="text-center sm:text-left mb-6 pr-8">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-blue-50 text-blue-800 text-[11px] font-black uppercase tracking-wider mb-2 border border-blue-200 shadow-2xs">
+        <div className="text-center sm:text-left mb-4 sm:mb-5 pr-8">
+          <span className="inline-block px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-blue-50 text-blue-800 text-[10px] sm:text-[11px] font-black uppercase tracking-wider mb-1.5 sm:mb-2 border border-blue-200 shadow-2xs">
             Pendaftaran Bimbingan Belajar
           </span>
-          <h3 id="modal-title" className="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-tight">
+          <h3 id="modal-title" className="text-lg sm:text-2xl font-extrabold text-gray-900 tracking-tight">
             Pilih Program Bimbingan Anda
           </h3>
-          <p className="text-xs sm:text-sm text-gray-600 mt-1">
-            Pilih program bimbingan belajar di bawah ini untuk langsung mengisi formulir pendaftaran.
+          <p className="text-[11px] sm:text-xs text-gray-500 mt-1">
+            Pilih program bimbingan belajar di bawah ini untuk langsung melihat paket dan formulir pendaftaran.
           </p>
         </div>
 
-        {/* Program Cards List */}
-        <div className="space-y-3.5">
+        {/* Program Cards List with Smooth Overflow Scroll */}
+        <div className="space-y-3 sm:space-y-3.5 overflow-y-auto pr-1 -mr-1">
           {programsData.map((program) => {
             const theme = getModalProgramTheme(program.id);
 
@@ -132,44 +132,67 @@ export default function ProgramSelectModal({ isOpen, onClose }) {
               <div
                 key={program.id}
                 onClick={() => handleSelect(program.slug || program.id)}
-                className={`p-4 sm:p-5 rounded-2xl border border-gray-200/80 bg-white shadow-xs hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${theme.cardBorder}`}
+                className={`p-3.5 sm:p-4.5 rounded-2xl border border-gray-200/80 bg-white shadow-xs hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between gap-3 ${theme.cardBorder}`}
               >
-                <div className="flex items-start gap-3.5">
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  {/* Icon */}
                   <span
-                    className={`text-2xl sm:text-3xl p-3 rounded-2xl group-hover:scale-110 transition-transform shrink-0 shadow-2xs ${theme.iconBg}`}
+                    className={`text-2xl sm:text-3xl p-2.5 sm:p-3 rounded-2xl group-hover:scale-110 transition-transform shrink-0 shadow-2xs ${theme.iconBg}`}
                   >
                     {program.icon}
                   </span>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-extrabold text-gray-900 group-hover:text-blue-700 transition-colors text-base">
+
+                  {/* Info */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+                      <h4 className="font-extrabold text-gray-900 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-snug">
                         {program.title}
                       </h4>
                       {program.badge && (
-                        <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full border shadow-2xs shrink-0 ${theme.badge}`}>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full border shadow-2xs shrink-0 ${theme.badge}`}>
                           ★ {program.badge}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed mb-2 sm:mb-0">
+
+                    <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 leading-relaxed">
                       {program.description}
                     </p>
-                    <div className="text-xs font-bold text-gray-700 mt-1.5 flex items-baseline gap-1">
-                      <span>Mulai dari</span>
-                      <strong className={`font-black text-sm ${theme.priceColor}`}>
-                        {formatRupiah(program.price)}
-                      </strong>
-                      <span className="text-gray-400 font-normal">{program.pricePeriod}</span>
+
+                    {/* Target Exam Track Pills */}
+                    {program.examTracks && (
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        {program.examTracks.map((track) => (
+                          <span
+                            key={track.id || track.name}
+                            className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-gray-100/90 text-gray-700 border border-gray-200/60 flex items-center gap-1"
+                          >
+                            <span>{track.icon || '🎯'}</span>
+                            <span>{track.shortName || track.name}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Price & Action Row */}
+                    <div className="mt-3 pt-2 border-t border-gray-100/90 flex items-center justify-between gap-2">
+                      <div className="text-xs text-gray-700 flex flex-wrap items-baseline gap-1">
+                        <span className="text-[10px] sm:text-xs text-gray-500">Mulai</span>
+                        <strong className={`font-black text-xs sm:text-sm ${theme.priceColor}`}>
+                          {formatRupiah(program.price)}
+                        </strong>
+                        {program.pricePeriod && (
+                          <span className="text-[10px] text-gray-400 hidden sm:inline">{program.pricePeriod}</span>
+                        )}
+                      </div>
+
+                      <button
+                        className={`text-[11px] sm:text-xs font-extrabold px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-xs transition-all shrink-0 pointer-events-none ${theme.btnClass}`}
+                      >
+                        Pilih &amp; Daftar &rarr;
+                      </button>
                     </div>
                   </div>
-                </div>
-
-                <div className="shrink-0 self-end sm:self-center">
-                  <button
-                    className={`text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-xs transition-all pointer-events-none ${theme.btnClass}`}
-                  >
-                    Pilih &amp; Daftar &rarr;
-                  </button>
                 </div>
               </div>
             );
@@ -177,15 +200,15 @@ export default function ProgramSelectModal({ isOpen, onClose }) {
         </div>
 
         {/* Modal Footer / Fast Consultation */}
-        <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-gray-500">
-          <span>
+        <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] sm:text-xs text-gray-500">
+          <span className="text-center sm:text-left">
             💬 Ingin konsultasi pemilihan program terlebih dahulu?
           </span>
           <a
             href="https://wa.me/6285890306392"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-600 hover:text-green-700 font-bold flex items-center gap-1.5 shrink-0"
+            className="text-green-600 hover:text-green-700 font-bold flex items-center justify-center sm:justify-end gap-1.5 shrink-0 py-0.5 hover:underline"
           >
             <span>Chat WhatsApp Admin</span> &rarr;
           </a>

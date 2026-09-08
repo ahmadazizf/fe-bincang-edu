@@ -22,6 +22,12 @@ export default function RegistrationForm({ registrationState, program }) {
   const sectionRef = useRef(null);
   const nameInputRef = useRef(null);
 
+  // Generate options target/jenis ujian spesifik dari program yang sedang dibuka
+  const examTrackOptions = program?.examTracks?.map((track) => ({
+    value: track.name,
+    label: track.name,
+  })) || [];
+
   // Generate options sub-program spesifik dari program yang sedang dibuka
   const subProgramOptions = program?.packages?.map((pkg) => ({
     value: pkg.name,
@@ -128,6 +134,12 @@ export default function RegistrationForm({ registrationState, program }) {
                   <span className="text-gray-500">Nama Orang Tua:</span>
                   <strong className="text-gray-900">{formData.namaOrtu}</strong>
                 </div>
+                {formData.examTrack && (
+                  <div className="flex justify-between border-b border-gray-200/60 pb-1.5">
+                    <span className="text-gray-500">Target Ujian:</span>
+                    <strong className="text-amber-700">{formData.examTrack}</strong>
+                  </div>
+                )}
                 {formData.subProgram && (
                   <div className="flex justify-between pt-1">
                     <span className="text-gray-500">Pilihan Paket:</span>
@@ -236,18 +248,32 @@ export default function RegistrationForm({ registrationState, program }) {
                 error={errors.namaOrtu}
               />
 
-              {/* Row 4: Pilihan Sub-Program / Paket Khusus Program Ini */}
-              {subProgramOptions.length > 0 && (
-                <Select
-                  id="subProgram"
-                  label="Pilihan Paket / Sub-Program"
-                  options={subProgramOptions}
-                  value={formData.subProgram}
-                  onChange={(e) => updateField('subProgram', e.target.value)}
-                  error={errors.subProgram}
-                  helperText="Pilih paket atau skema bimbingan yang diinginkan"
-                />
-              )}
+              {/* Row 4: Pilihan Target / Jenis Ujian & Paket Sub-Program */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {examTrackOptions.length > 0 && (
+                  <Select
+                    id="examTrack"
+                    label="Target / Jenis Ujian"
+                    options={examTrackOptions}
+                    value={formData.examTrack}
+                    onChange={(e) => updateField('examTrack', e.target.value)}
+                    error={errors.examTrack}
+                    helperText="Pilihan target (SNBT, SIMAK UI, KKI UI, dll)"
+                  />
+                )}
+
+                {subProgramOptions.length > 0 && (
+                  <Select
+                    id="subProgram"
+                    label="Pilihan Paket / Sub-Program"
+                    options={subProgramOptions}
+                    value={formData.subProgram}
+                    onChange={(e) => updateField('subProgram', e.target.value)}
+                    error={errors.subProgram}
+                    helperText="Pilih paket atau skema bimbingan"
+                  />
+                )}
+              </div>
 
               <div className="pt-2">
                 <Button

@@ -16,15 +16,15 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
   };
 
   const getPackageTheme = (idx) => {
-    switch (idx % 3) {
+    switch (idx % 4) {
       case 0:
         return {
-          topBorder: 'border-t-4 border-t-amber-400',
-          badge: 'bg-amber-100 text-amber-950 border-amber-300/80',
-          priceBox: 'bg-amber-50/90 border-amber-200/90 text-amber-950',
-          priceColor: 'text-amber-950',
-          btnClass: 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 hover:from-amber-300 hover:to-yellow-300 text-blue-950 shadow-amber-500/25',
-          highlightBadge: 'bg-gradient-to-r from-amber-400 to-yellow-400 text-blue-950 font-black',
+          topBorder: 'border-t-4 border-t-pink-500',
+          badge: 'bg-pink-100 text-pink-950 border-pink-300/80',
+          priceBox: 'bg-pink-50/90 border-pink-200/90 text-pink-950',
+          priceColor: 'text-pink-950',
+          btnClass: 'bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 hover:from-pink-600 hover:to-rose-600 text-white shadow-pink-500/25',
+          highlightBadge: 'bg-pink-500 text-white font-black',
         };
       case 1:
         return {
@@ -36,14 +36,23 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
           highlightBadge: 'bg-sky-500 text-white font-black',
         };
       case 2:
+        return {
+          topBorder: 'border-t-4 border-t-purple-600',
+          badge: 'bg-purple-100 text-purple-950 border-purple-300/80',
+          priceBox: 'bg-purple-50/90 border-purple-200/90 text-purple-950',
+          priceColor: 'text-purple-950',
+          btnClass: 'bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:to-indigo-700 text-white shadow-purple-600/25',
+          highlightBadge: 'bg-purple-600 text-white font-black',
+        };
+      case 3:
       default:
         return {
-          topBorder: 'border-t-4 border-t-blue-600',
-          badge: 'bg-blue-100 text-blue-950 border-blue-300/80',
-          priceBox: 'bg-blue-50/90 border-blue-200/90 text-blue-950',
-          priceColor: 'text-blue-950',
-          btnClass: 'bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-800 hover:from-blue-800 hover:to-indigo-700 text-white shadow-blue-700/25',
-          highlightBadge: 'bg-blue-600 text-white font-black',
+          topBorder: 'border-t-4 border-t-amber-400',
+          badge: 'bg-amber-100 text-amber-950 border-amber-300/80',
+          priceBox: 'bg-amber-50/90 border-amber-200/90 text-amber-950',
+          priceColor: 'text-amber-950',
+          btnClass: 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 hover:from-amber-300 hover:to-yellow-300 text-blue-950 shadow-amber-500/25',
+          highlightBadge: 'bg-gradient-to-r from-amber-400 to-yellow-400 text-blue-950 font-black',
         };
     }
   };
@@ -60,7 +69,7 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
       <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-200/50 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-400/40 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10 text-left">
+      <div className="max-w-7xl mx-auto relative z-10 text-left">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block px-3.5 py-1 rounded-full bg-white/30 text-blue-950 text-xs font-bold uppercase tracking-widest mb-3 border border-white/50 shadow-xs backdrop-blur-md">
             Pilihan Paket &amp; Rincian Investasi
@@ -69,11 +78,11 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
             Pilihan Kelas &amp; Struktur Biaya
           </h2>
           <p className="text-base text-blue-950/85 font-medium leading-relaxed">
-            Pilih tipe kelas dan skema bimbingan yang paling sesuai dengan kebutuhan persiapan ujian Anda.
+            Biaya paket di bawah ini berlaku sama untuk semua pilihan target ujian (<strong>SNBT</strong>, <strong>SIMAK UI</strong>, <strong>KKI UI</strong>, maupun <strong>SIMAK Pascasarjana</strong>) dan sudah termasuk buku cetak bahan ajar asli.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div className={`grid grid-cols-1 ${packages.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-6 items-stretch`}>
           {packages.map((pkg, idx) => {
             const theme = getPackageTheme(idx);
 
@@ -96,7 +105,26 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
                     )}
                   </div>
 
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-3">{pkg.name}</h3>
+                  <h3 className="text-xl font-extrabold text-gray-900 mb-3 flex items-center gap-1.5">
+                    {pkg.icon && <span className="text-xl">{pkg.icon}</span>}
+                    <span>{pkg.name}</span>
+                  </h3>
+
+                  {/* Sesi & Tryout Info Pills */}
+                  {(pkg.sessions || pkg.tryout) && (
+                    <div className="mb-3.5 flex flex-wrap gap-1.5">
+                      {pkg.sessions && (
+                        <span className="text-[11px] font-bold text-blue-950 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100 flex items-center gap-1">
+                          ⏱️ {pkg.sessions}
+                        </span>
+                      )}
+                      {pkg.tryout && (
+                        <span className="text-[11px] font-bold text-amber-950 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-100 flex items-center gap-1">
+                          🎯 {pkg.tryout}
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   {/* Target / Tipe Kelas */}
                   {pkg.classType && (
@@ -153,6 +181,20 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
                     </div>
                   )}
 
+                  {/* Rincian Biaya Paket & Pendaftaran */}
+                  {pkg.packageFee && pkg.regFee && (
+                    <div className="mb-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600">
+                      <div className="flex justify-between">
+                        <span>Biaya Paket:</span>
+                        <span className="font-bold text-gray-900">{formatRupiah(pkg.packageFee)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Biaya Pendaftaran:</span>
+                        <span className="font-bold text-gray-900">{formatRupiah(pkg.regFee)} (1x di awal)</span>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Skema Pembayaran Camp (Booking Seat & Pelunasan) */}
                   {pkg.bookingSeat && (
                     <div className="mb-4 pt-3 border-t border-gray-100 space-y-1.5 text-xs text-gray-600">
@@ -193,6 +235,24 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
             );
           })}
         </div>
+
+        {/* Ketentuan Pembayaran Info Banner */}
+        {/* <div className="mt-12 p-5 sm:p-6 bg-white/95 backdrop-blur-md rounded-3xl border border-white/80 shadow-xl text-blue-950 max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-5">
+          <span className="text-4xl p-3.5 bg-gradient-to-tr from-amber-100 to-yellow-200 rounded-2xl shrink-0 shadow-inner">
+            💳
+          </span>
+          <div className="text-xs sm:text-sm text-left">
+            <h4 className="font-black text-blue-950 text-base mb-1.5 flex items-center gap-2">
+              <span>Ketentuan Pembayaran &amp; Fasilitas Belajar:</span>
+            </h4>
+            <ul className="text-blue-950/85 leading-relaxed space-y-1 list-disc list-inside">
+              <li><strong>Harga Sama untuk Semua Target Ujian:</strong> Pilihan target <strong>SNBT</strong>, <strong>SIMAK UI (S1/Vokasi)</strong>, <strong>KKI UI</strong>, maupun <strong>SIMAK Pascasarjana</strong> memiliki struktur biaya paket yang sama persis.</li>
+              <li>Pilihan <strong>Privat Online maupun Offline</strong> memiliki harga yang sama, peserta bebas memilih metode belajar yang paling sesuai.</li>
+              <li>Sudah termasuk <strong>Buku Bahan Ajar ASLI</strong> yang disesuaikan secara khusus dengan target ujian pilihan siswa.</li>
+              <li><strong>Ketentuan Pembayaran:</strong> LUNAS di awal pendaftaran (Biaya pendaftaran Rp250.000 dibayarkan satu kali untuk program reguler/privat).</li>
+            </ul>
+          </div>
+        </div> */}
       </div>
     </section>
   );

@@ -7,20 +7,20 @@ export default function HeroSection() {
     <header className="relative overflow-hidden bg-gradient-to-b from-blue-900 via-blue-800 to-indigo-950 text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       {/* Background decoration elements */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-      
+
       {/* Soft Glow Circles */}
       <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column: Headline, Value Proposition, & CTA */}
           <div className="lg:col-span-7 text-left animate-fade-in-left">
             {/* Tag Badge with Keywords */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-yellow-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 backdrop-blur-md border border-white/20 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-yellow-400 animate-ping" />
-              <span>Bimbel Masuk UI &amp; Bimbel SNBT PTN Terbaik 2026</span>
+              <span>Bimbel Masuk UI &amp; Bimbel SNBT PTN Terbaik 2027</span>
             </div>
 
             {/* Main Semantic Headline */}
@@ -33,7 +33,7 @@ export default function HeroSection() {
 
             {/* Subtitle & Tagline */}
             <p className="text-lg sm:text-xl text-yellow-300 font-semibold mb-4 italic">
-              "{siteConfig.tagline} — Bimbel PTN &amp; Bimbel Simak UI dengan Master Tutor Lulusan UI"
+              "{siteConfig.tagline} — Bimbel PTN &amp; Bimbel Simak UI dengan Master Tutor lulusan PTN"
             </p>
 
             {/* Description with Natural Keywords */}
@@ -63,7 +63,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="text-xl sm:text-2xl font-black text-yellow-400">100%</div>
-                <div className="text-xs text-blue-200 font-medium">Master Tutor Lulusan UI</div>
+                <div className="text-xs text-blue-200 font-medium">Master Tutor lulusan PTN</div>
               </div>
               <div>
                 <div className="text-xl sm:text-2xl font-black text-yellow-400">1500+</div>

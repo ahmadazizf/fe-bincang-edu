@@ -4,6 +4,7 @@ import SEO from '../components/common/SEO';
 import {
   programsData,
   ProgramDetailHero,
+  ProgramExamTracks,
   ProgramSyllabus,
   ProgramPackagesTable,
 } from '../features/programs';
@@ -105,7 +106,12 @@ export default function ProgramDetailPage() {
       {/* 1. Header & Program Hero Banner (Biru) */}
       <ProgramDetailHero program={program} />
 
-      {/* 2. Pilihan Paket & Rincian Biaya / Sub-Program (Kuning) */}
+      {/* 2. Pilihan Target / Jenis Ujian (Biru/Dark) */}
+      {program.examTracks && (
+        <ProgramExamTracks examTracks={program.examTracks} />
+      )}
+
+      {/* 3. Pilihan Paket & Rincian Biaya / Sub-Program (Kuning) */}
       {program.packages && (
         <ProgramPackagesTable
           packages={program.packages}

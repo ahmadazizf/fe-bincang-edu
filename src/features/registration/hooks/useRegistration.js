@@ -4,6 +4,7 @@ import { submitRegistration } from '../services/registrationApi';
 export function useRegistration(currentProgram = null) {
   const initialProgramTitle = currentProgram?.title || 'Bimbingan Belajar Bincang Edukasi';
   const initialSubProgram = currentProgram?.packages?.[0]?.name || '';
+  const initialExamTrack = currentProgram?.examTracks?.[0]?.name || '';
 
   const [formData, setFormData] = useState({
     nama: '',
@@ -13,6 +14,7 @@ export function useRegistration(currentProgram = null) {
     namaOrtu: '',
     programTitle: initialProgramTitle,
     subProgram: initialSubProgram,
+    examTrack: initialExamTrack,
   });
 
   const [prevProgramId, setPrevProgramId] = useState(currentProgram?.id);
@@ -28,6 +30,7 @@ export function useRegistration(currentProgram = null) {
       ...prev,
       programTitle: currentProgram.title,
       subProgram: currentProgram.packages?.[0]?.name || '',
+      examTrack: currentProgram.examTracks?.[0]?.name || '',
     }));
   }
 
@@ -47,6 +50,9 @@ export function useRegistration(currentProgram = null) {
     }
     if (!formData.namaOrtu.trim()) {
       newErrors.namaOrtu = 'Nama orang tua wajib diisi';
+    }
+    if (currentProgram?.examTracks && currentProgram.examTracks.length > 0 && !formData.examTrack) {
+      newErrors.examTrack = 'Target / jenis ujian wajib dipilih';
     }
     if (currentProgram?.packages && currentProgram.packages.length > 0 && !formData.subProgram) {
       newErrors.subProgram = 'Pilihan sub-program wajib dipilih';
@@ -75,6 +81,7 @@ export function useRegistration(currentProgram = null) {
       namaOrtu: '',
       programTitle: currentProgram?.title || initialProgramTitle,
       subProgram: currentProgram?.packages?.[0]?.name || '',
+      examTrack: currentProgram?.examTracks?.[0]?.name || '',
     });
     setErrors({});
     setIsSuccess(false);
@@ -91,9 +98,10 @@ export function useRegistration(currentProgram = null) {
       // 1. Simpan/kirim data ke API service
       await submitRegistration(formData);
 
-      // 2. Format pesan WhatsApp spesifik untuk sub-program
+      // 2. Format pesan WhatsApp spesifik untuk target ujian dan sub-program
       const waNumber = '6285890306392';
       const programHeader = formData.programTitle || currentProgram?.title || 'Program Bincang Edukasi';
+      const examTrackSelected = formData.examTrack ? `\n*Target / Jenis Ujian:* ${formData.examTrack}` : '';
       const subProgramSelected = formData.subProgram ? `\n*Pilihan Sub-Program / Paket:* ${formData.subProgram}` : '';
 
       const message = `Halo Admin Bincang Edukasi, saya ingin mendaftar program bimbingan belajar:
@@ -103,7 +111,7 @@ export function useRegistration(currentProgram = null) {
 *Alamat / Asal Kota:* ${formData.alamat}
 *Nomor WhatsApp:* ${formData.whatsapp}
 *Nama Orang Tua:* ${formData.namaOrtu}
-*Program Utama:* ${programHeader}${subProgramSelected}
+*Program Utama:* ${programHeader}${examTrackSelected}${subProgramSelected}
 
 Mohon informasi mengenai ketersediaan seat, jadwal, dan langkah pendaftaran selanjutnya. Terima kasih!`;
 

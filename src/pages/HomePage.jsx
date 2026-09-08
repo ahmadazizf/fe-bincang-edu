@@ -32,8 +32,8 @@ export default function HomePage() {
           {
             '@type': 'Course',
             position: 1,
-            name: 'One Month Camp SIMAK KKI UI by Bincang Edu',
-            description: 'Karantina intensif 1 bulan di Saffron Apartment Sentul Bogor persiapan SIMAK KKI UI dan Kedokteran dengan Master Tutor UI.',
+            name: 'ONE MONTH CAMP SNBT, SIMAK UI & KKI UI 2027 by Bincang Edu',
+            description: 'Karantina intensif 1 bulan di Saffron Apartment Sentul Bogor untuk persiapan SNBT, SIMAK UI, dan SIMAK KKI UI bersama Master Tutor UI.',
             provider: {
               '@type': 'EducationalOrganization',
               name: 'Bincang Edukasi',
@@ -54,8 +54,8 @@ export default function HomePage() {
           {
             '@type': 'Course',
             position: 3,
-            name: 'Bimbel SNBT & Bimbel PTN Reguler',
-            description: 'Kelas intensif persiapan UTBK SNBT dengan latihan soal HOTS dan tryout CBT berkala.',
+            name: 'Paket Privat SNBT & SIMAK UI 2027 by Bincang Edu',
+            description: 'Program bimbingan privat Online & Offline intensif persiapan SNBT 2027 dan SIMAK UI 2027 (SIMAK KKI, S1 Reguler, Vokasi, dan Pascasarjana).',
             provider: {
               '@type': 'EducationalOrganization',
               name: 'Bincang Edukasi',
@@ -72,7 +72,7 @@ export default function HomePage() {
             name: 'Apa saja program bimbingan belajar di Bincang Edukasi?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Bincang Edukasi menyediakan program One Month Camp SIMAK KKI UI (Karantina Sentul Bogor), Bimbingan Penulisan Esai & Motivation Letter, dan Kelas Reguler SNBT/PTN.',
+              text: 'Bincang Edukasi menyediakan program One Month Camp SIMAK KKI UI (Karantina Sentul Bogor), Bimbingan Penulisan Esai & Motivation Letter, dan Paket Privat SNBT & SIMAK UI 2027 (Online & Offline).',
             },
           },
           {
