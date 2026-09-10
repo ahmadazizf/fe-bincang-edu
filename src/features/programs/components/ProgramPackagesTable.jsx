@@ -150,14 +150,14 @@ export default function ProgramPackagesTable({ packages = [], onSelectPackage })
                     </div>
                   )}
 
-                  {/* Akomodasi / Kamar (Khusus Camp) */}
+                  {/* Akomodasi / Kamar / Kehadiran (Khusus Camp) */}
                   {pkg.room && (
                     <div className="mb-3.5">
                       <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-1">
-                        Akomodasi Kamar:
+                        {pkg.name === 'RAGWORT' ? 'Akomodasi & Kehadiran:' : 'Akomodasi Kamar:'}
                       </span>
                       <p className="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100 leading-relaxed">
-                        🛏️ {pkg.room}
+                        {pkg.name === 'RAGWORT' ? '🚗' : '🛏️'} {pkg.room}
                       </p>
                     </div>
                   )}
